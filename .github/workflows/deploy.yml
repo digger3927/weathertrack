@@ -11,10 +11,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3  # Updated to v3
+      uses: actions/checkout@v3
 
     - name: Authenticate to Google Cloud
-      uses: google-github-actions/auth@v1  # New auth action
+      uses: google-github-actions/auth@v1
       with:
         credentials_json: ${{ secrets.GCP_KEY }}
 
@@ -23,9 +23,9 @@ jobs:
       with:
         project_id: ${{ secrets.GCP_PROJECT_ID }}
 
-    - name: Authenticate Docker with Google Container Registry
+    - name: Configure Docker for Google Cloud authentication
       run: |
-        echo "${{ secrets.GCP_KEY }}" | docker login -u _json_key --password-stdin https://gcr.io
+        gcloud auth configure-docker --quiet
 
     - name: Build and push Docker image
       run: |
