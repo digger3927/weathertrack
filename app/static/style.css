@@ -4,8 +4,8 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;  /* Center horizontally */
-    align-items: center;      /* Center vertically */
+    justify-content: top;  /* Center horizontally */
+    align-items: left;      /* Center vertically */
     height: 100vh;            /* Full viewport height */
     flex-direction: column;   /* Stack elements vertically */
 }
