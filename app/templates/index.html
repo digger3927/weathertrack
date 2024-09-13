@@ -4,28 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeatherTrack</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <h1>WeatherTrack</h1>
 
     <form method="POST">
-        <label for="city">Enter a city (e.g., New York,NY,US):</label>
+        <label for="city">Enter a city or ZIP code:</label>
         <input type="text" name="city" id="city" required>
         <button type="submit">Get Weather</button>
     </form>
-    
 
     {% if weather %}
-        <h2>Weather in {{ weather.name }}:</h2>
-        <ul>
-            <li>Temperature: {{ weather.main.temp }} °C</li>
-            <li>Weather: {{ weather.weather[0].description }}</li>
-            <li>Humidity: {{ weather.main.humidity }}%</li>
-        </ul>
+        <div class="weather-output">
+            <h2>Weather in {{ weather.name }}:</h2>
+            <ul>
+                <li>Temperature: {{ weather.main.temp }} °F</li>
+                <li>Weather: {{ weather.weather[0].description }}</li>
+                <li>Humidity: {{ weather.main.humidity }}%</li>
+            </ul>
+        </div>
     {% endif %}
 
     {% if error %}
-        <p style="color: red;">{{ error }}</p>
+        <p class="error-message">{{ error }}</p>
     {% endif %}
 </body>
 </html>
