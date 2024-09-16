@@ -1,4 +1,5 @@
-WeatherTrack
+#WeatherTrack
+
 WeatherTrack is a simple Flask application that allows users to retrieve weather information for a city or ZIP code using the OpenWeatherMap API. The app is containerized using Docker and deployed to Google Cloud Run.
 Features
 Retrieve current weather for a given city or ZIP code.
