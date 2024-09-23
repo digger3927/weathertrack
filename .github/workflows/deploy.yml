@@ -33,9 +33,13 @@ jobs:
         docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/weathertrack:$GITHUB_SHA
 
     - name: Deploy to Cloud Run
+      env:
+        WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}  # Add the API key as an environment variable
       run: |
         gcloud run deploy weathertrack \
           --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/weathertrack:$GITHUB_SHA \
           --region us-central1 \
           --platform managed \
-          --allow-unauthenticated
+          --allow-unauthenticated \
+          --set-env-vars WEATHER_API_KEY=${{ secrets.WEATHER_API_KEY }}  # Pass the API key to Cloud Run
+
